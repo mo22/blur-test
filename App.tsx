@@ -15,6 +15,7 @@ import {
   View,
   StatusBar,
   Switch,
+  Platform,
 } from 'react-native';
 
 import {
@@ -35,7 +36,19 @@ const App = () => {
 
           {enabled && (
             <BlurView
-              style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                right: 0,
+                bottom: 0,
+                ...Platform.select({
+                  android: {
+                    marginRight: 3,
+                    marginBottom: 1,
+                  },
+                }),
+              }}
               blurType="light"
               blurAmount={10}
             />
